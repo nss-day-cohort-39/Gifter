@@ -18,7 +18,11 @@ namespace Gifter.Repositories
 
         public List<Post> GetAll()
         {
-            return _context.Post.Include(p => p.UserProfile).ToList();
+            return _context.Post
+                           .Include(p => p.Comments)
+                           .Include(p => p.UserProfile)
+                           .OrderByDescending(p => p.DateCreated)
+                           .ToList();
         }
 
         public Post GetById(int id)
@@ -58,6 +62,8 @@ namespace Gifter.Repositories
 
         public void Add(Post post)
         {
+            post.DateCreated = DateTime.Now;
+
             _context.Add(post);
             _context.SaveChanges();
         }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardImg, CardBody } from "reactstrap";
+import { Card, CardImg, CardBody, ListGroup, ListGroupItem } from "reactstrap";
 
 const Post = ({ post }) => {
   return (
@@ -12,6 +12,11 @@ const Post = ({ post }) => {
         </p>
         <p>{post.caption}</p>
       </CardBody>
+      <ListGroup flush>
+        {post.comments.map((c) => (
+          <ListGroupItem tag="p">{c.message}</ListGroupItem>
+        ))}
+      </ListGroup>
     </Card>
   );
 };

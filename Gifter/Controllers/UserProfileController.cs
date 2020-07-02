@@ -23,6 +23,7 @@ namespace Gifter.Controllers
         public IActionResult Get(int id)
         {
             var user = _userRepo.GetById(id);
+
             if (user == null)
             {
                 return NotFound();
