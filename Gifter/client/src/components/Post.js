@@ -14,7 +14,9 @@ const Post = ({ post }) => {
       </CardBody>
       <ListGroup flush>
         {post.comments.map((c) => (
-          <ListGroupItem tag="p">{c.message}</ListGroupItem>
+          <ListGroupItem key={c.id} tag="p">
+            {c.message}
+          </ListGroupItem>
         ))}
       </ListGroup>
     </Card>
